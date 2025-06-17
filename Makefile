@@ -26,4 +26,4 @@ s-b:
 
 services: up s-a s-b
 
-apps: s-a s-b
+request: s-a s-b

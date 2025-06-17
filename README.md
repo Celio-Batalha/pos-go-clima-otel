@@ -15,13 +15,18 @@ Projeto desenvolvido em Go que receba um CEP, identifica a cidade e retorna o cl
 
 ### Subindo os serviços
 
-1. Utilize o comando a seguir para subir toda a atividade:
+1. Utilize o comando a seguir para subir os serviços e executar as atividades:
 
 ```bash
 make services
 ```
+2. Utilize o comando a seguir para mais requisiçoes:
 
-2. No seu navegador local, abra a URL e valide as evidências. Abaixo algumas imagens de referência:
+```bash
+make request
+```
+
+3. No seu navegador local, abra a URL e valide as evidências. Abaixo algumas imagens de referência:
 
 http://localhost:9411/
 
