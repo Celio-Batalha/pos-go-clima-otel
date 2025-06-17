@@ -1,0 +1,51 @@
+services:
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    hostname: zipkin
+    ports:
+      - '9411:9411'
+    networks:
+      - tracing
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:9411/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  goappa:
+    container_name: goappa
+    hostname: goappa
+    build:
+      context: ./service_a
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - zipkin
+      - goappb
+    networks:
+      - tracing
+
+  goappb:
+    container_name: goappb
+    hostname: goappb
+    build:
+      context: ./service_b
+      dockerfile: Dockerfile
+    environment:
+      - WEATHER_KEY=${WEATHER_KEY}
+    ports:
+      - '8081:8081'
+    networks:
+      - tracing
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+networks:
+  tracing:
+    driver: bridge
