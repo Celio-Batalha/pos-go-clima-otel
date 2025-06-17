@@ -1,5 +1,5 @@
 
-# Pos Go Weather Tracing
+# Pos Go Clima com Otel
 
 Projeto desenvolvido em Go que receba um CEP, identifica a cidade e retorna o clima atual (temperatura em graus celsius, fahrenheit e kelvin) juntamente com a cidade. Esse sistema deverá implementar OTEL(Open Telemetry) e Zipkin.
 
