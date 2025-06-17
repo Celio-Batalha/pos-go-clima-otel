@@ -51,7 +51,6 @@ var weatherKey string
 
 func main() {
 
-	weatherKey = os.Getenv("WEATHER_KEY")
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8081"
